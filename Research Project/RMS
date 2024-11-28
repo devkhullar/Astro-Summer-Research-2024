@@ -1,0 +1,95 @@
+Date: 19 July 2024
+
+In this document, I will document the rms (root mean square) of the images that I have calibrated and then find the 3-sigma upper limit associated with those rms values of the respective projects 
+
+Projects where the source was detected: 
+
+- AM 553 - 17 September 1997 (observation.50708.0822801)
+- AM 558 - 25 June 1997 (observation.50624.1409722)
+
+Projects where the source was not detected:
+
+- AM 481 - 19 June 1995
+- AM 481 - 5 September 1995
+- AM 481 - 7 September 1995
+- AM 553 - 23 September 1997
+- AM 560 - 14 August 1997
+
+PROJECTS WHERE THE SOURCE WAS DETECTED: 
+
+1. AM 553 - 17 September 1997
+observation.50708.0822801
+
+flux: 0.21 ± 0.04
+rms: 1.352217e-04
+   : 0.0001352217
+
+3-sigma upper limit: 0.0004056651
+ ****************************************************************************
+
+2. AM 558 - 25 June 1997
+observation.50624.1409722
+
+Expected Flux: 0.20 ± 0.03 
+rms: 8.331639e-05
+   : 0.00008331639
+3-sigma upper limit: 0.00024994917
+******************************************************************************
+
+PROJECTS WHERE THE SOURCE WAS not DETECTED:
+
+1. AM 481- 19 June 1995
+observation.49887.1873958
+
+Expected Flux: ?
+rms:0.00004478524
+3-sigma upper limit: 0.00013435572 Jy or 0.13435572 m Jy 
+                   : 0.13 mJy
+*******************************************************************************
+
+2. AM481 - 5 September 1995
+observation.49965.968182
+
+Expected Flux: < 0.28
+rms: 0.600006491187
+3-sigma upper limit: 0.00019473560999999997 Jy or  0.194 735 61 mJy
+                   : 0.19
+********************************************************************************
+
+3. AM481 - 7 September 1995
+observation.49967.1316088
+
+Expected Flux: < 0.40
+rms:  0.0001024636
+3-sigma upper limit: 0.0003073908 Jy or   0.307 390 8 mJy 
+                   : 0.31 mJy
+*********************************************************************************
+
+4. AM 553 - 23 September 1997 &&&&&&&&&&&&&&&&&&&&& check with alex &&&&&&&&&&&&&&&&&&&&&&&&&&&&
+observation.50714.9612153
+
+Expected Flux: < 0.24
+rms: 8.666430e-06
+3-sigma upper limit:  0.025 999 29 mJy 
+                   : 0.026 mJy 
+
+imstat(imagename='TERZAN1.img.image', box='494, 495, 540, 536', logfile='TERZAN1.AM553.imstat.txt')
+
+******************************************************************************************************
+
+5. AM 560 - 14 August 1995
+
+Expected Flux: 0.29
+rms: 6.424954e-05 
+3 sigma upper limit:  0.192 748 62 mJy
+                   : 0.19 mJy
+imstat(imagename='TERZAN1_img.image', box='504, 502, 524, 525', logfile='TERZAN1.AM553.imstat.txt')
+*************************************************************************************
+
+Observation Date: 2022
+
+Expected Flux: ?
+rms: 1.371178e-05
+3 sigma upper limit: 4.113534e-05
+                   : 0.041 mJy
+                   

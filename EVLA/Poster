@@ -1,0 +1,31 @@
+
+Introduction and Background: 
+Globular clusters are regions in galaxies with a highly dense population of stars bound by gravity. As a consequence, they are excellent factories for producing binary systems, i.e., when a compact object (Black Hole or Neutron Star) accretes material from a donor star. In these binary systems (known as X-ray binaries or XBs), the material starts rotating around the compact object, forming a disk called an accretion disk. Some of the material from the accretion disk may also be ejected in the form of an outflowing jet. These accretion and ejection processes are violent and variable, turning these XBs into transient astrophysical sources. Of the hundreds of known globular clusters in the Milky Way Galaxy, Terzan 1 has an incredibly rich, but complex, XB population. In particular, when the rate at which material pulled off the donor star increases, we observe bright, day-month long outbursts. In this project, I make use of newly obtained X-ray and radio wavelength observations to accurately map the XB population in Terzan 1, helping resolve the decades old question of the true compact nature of this cluster. 
+ 
+Objective: To understand the nature of the compact object population in the globular cluster Terzan 1
+
+Methodology:
+Raw Data (new and past observations) -> Analysis (Flagging & Calibrations) -> Imaging -> Identification of transient sources  
+
+(1) Analysing new and past radio/x-ray data of Terzan 1 to produce images of the cluster at different epochs 
+(2) Identification of radio/X-ray sources found in Terzan 1 Images 
+(3) Place identified sources on the radio/x-ray plane to classify them as BHs or NSs
+
+
+Results: 
+(1) images of the different data sets 
+(2) another image with the sources circled
+(3) the sources 
+
+a note on the transient/variable nature that can be observed through the images
+
+
+Conclusion and Discussion: 
+
+follow up workj: -> Classification as BHs/ NSs
+References:
+
+Acknowledgments: I would like to thank Dr. Alexandra Tetarenko for providing me with the opportunity for this research and for their continuous support and guidance throughout this project.
+
+nrao
+uol 

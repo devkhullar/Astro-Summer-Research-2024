@@ -1,0 +1,250 @@
+Questions 
+
+Section 4: Calibration
+Sub-section: Baseline based corrections
+
+After writing the code, I want to use the tclean function to see the data. What imagesize and other parameters must I use?
+
+ tclean(vis='ag733.ms), imagename='example.1', imsize=[1024,1024], cell=
+      ...: ['0.75arcsec','0.75arcsec'])
+
+Question2 
+Section 4: Calibration
+Sub-section: Splitting the calibrated source data from the multisource measurement set
+
+Why are we splitting the calibrated source data from the measurement set?
+Why cannot we just use it with the original ms file?
+Is it the way this is supposed to be done to work with the calibrated data? or something else?
+
+How do we know that NGC1667 is the calibrated sourcelist?
+
+Section 5: Imaging
+Sub-section: imaging
+After the default(tclean) task, why do we have * in rmtables(imagename+'*') ?
+
+In the imaging section, I imaged NGC1667 after using the tclean function, but I do not understand it. 
+
+tclean -> interactive = True: will trigger an interactive GUI at every major cycle boundary
+
+inferometry: We measure distances using interference of waves
+
+####################### 29 May 2024 ##########################
+
+1. Do I need to use the antenna in the centre as my reference antenna always?
+Answer: Yes
+2. If yes, what are other antennas used for then?
+Answer: Don't worry about it 
+####################### 3 June 2024 ##########################
+
+1. How does flagdata work? When I put in a specific timerange, spw, field, scan, etc, how does it not remove the useful data as well?
+Answer: There is no way we can remove just some of the bad data without sacrificing the good data, but that's alright.
+
+2. I do not understand how correlation is affecting my data
+Answer: it's okay
+
+3. plotms: 
+field = 6
+baseline. what does it mean?
+
+4. First we find the flux density scale calibrator because we already know the source's flux density precisely. We then compare the observed with the precise one, which provides us with the complex gain. Once, we get the complex gain, we can apply that calibration to all other sources to get the proper, precise flux density. Right?
+ 
+Answer: Yes, that's right. 
+
+5. What are the sources and what are the complex gain calibrators here? How do I figure that out?
+Answer: Usually, there are mentioned in the listobs command. But, if it is not, look up online. 
+Also, the source which will be repeated a lot will be the complex gain calibrator.
+
+##############################4 June 2024####################################
+
+1. For field 6, the plot looks better with the RL, LR correlation, rather than the RR, LL correlation. Can I do something about that?
+Answer: It does not matter. I do not have to flag it either. 
+
+2. Is my frequency correct? I chose 3C286_C.im
+Answer: Yes, it is. However, I chose the wrong source. I was supposed to use Terzan1 instead of 1331+305. 
+
+
+3. I am not sure about what is going on with the field and the sources in the tutorial. How do I do that with my project here? 
+Answer:Alex told us that 
+1. FDSC                   : 1331+305
+2. Complex Gain Calibrator: 1751-253
+3. Target                 : Terzan1
+
+4. What are antenna1 and antenna2? I do not understand them. I am aware that the baselines are made up of 2 antennas. But when plotting, what does antenna1 and antenna2 mean? Like, conider the code below
+plotms(vis='cal.G', coloraxis='Antenna1', yaxis='amp', xaxis='time')
+plotms(vis='cal.G', coloraxis='Antenna2', yaxis='amp', xaxis='time')
+Both the lines of code produced the same image, antenna1 with colors, antenna 2 without.
+Answer: it does not matter.
+
+############################ 5 June 2024 ##########################
+1. I am not sure if I used the correct field to get the calibrations for flux density and for complex gain. I want to confirm that once with Alex. 
+Answer: They are good. 
+
+
+2. Understand the tclean function from Alex. 
+ 
+############################ 6 June 2024 ##############################
+
+########################### 7 June 2024 ################################
+1. There is an outlier in field='1', scan='9'. Confirm what to do about it with Alex.
+
+######################### 8 June 2024 ##################################
+1. I unflagged some important data, somehow. When I tried to unflag everything, it still did not unflag everything. 
+
+########################## 9 June 2024 ##################################
+1. Does field='1', scan='6' look alright?
+
+2. In field='2', scan='8', almost all of the data at the top is provided by VA21. Should I flag the antenna here?
+
+3. What exactly is self calibration? Why do we need it on top of the calibrations that we did before them?
+
+4. For am553 project, I made a mistake in blcal command. 
+in the field paramter, i gave it 'TERZAN1' instead of another field. 
+Should I correct that?
+
+########################### 13 June 2024 ###################################
+1. For 1751-253, when I was using the setjy task, I used the model name for 1331+503, which must be incorrect, I assume. What model should I use?
+
+2. Show alex the image of 1331+503
+
+
+########################### 18 June 2024 ####################################
+1. Why do we just use only two corners in imfit for getting the x and y coordinates of the data
+
+######################## 20 June 2024 ####################################
+1. show error to Alex for 
+a. applycal (fluxscale)
+b. blcal 
+c. applycal (blcal)
+
+2. Why are scan 10 and 13 looking like that? 
+Answer: When Alex downloaded the data, some parts of the data were flagged beforehand
+
+3. Could the results with the am553 data be weird because of any mistakes that I made with data flagging?
+Answer: I got the results consistent with the studies using solint='1min'
+
+####################### 21 June 2024 #####################
+
+I am not sure if the reference antenna is a good choice. 
+Answer: it's alright
+
+####################### 26 June 2024 ####################
+
+1. I want to understand the table in the pdf. Why don't we have uncertainities in the table for some of the sources? 
+Answer: The source is transient in nature
+
+2. What are the next steps in the process? 
+Answer: Imaging the data using python libraries. Making a ppt.
+
+3. How am I going to characterize the BH and NS sources? 
+Answer: We will see
+
+4. Just out of curiousity, what am I seeing in the images in the jupyter notebooks? 
+Answer: They are the outbursts from a black hole 
+
+
+########### 30 June 2024 ###########
+
+1. I want to see how my data would be affected if I were using just the spw='0,1' for the setjy 
+
+2.  Use of blcal should be approached with great care, after all antenna-based calibration options have been exhausted, and then only on long timescales, to ensure that the solution doesn’t absorb true—or reinforce false—source structure. You must be sure you have an excellent model for the source
+
+The above is a warning that I saw on the documentation for blcal
+
+3. Learn what solution intervals mean
+
+4. I want to see what goes on with my data if I 
+a. make a separate splitfile of the source and the calibrators with the spw = '0,1' because terzan 1 also has that spw
+
+b. I want to see what would happen if I did not apply blcal
+
+5. Maybe my reference antenna is bad. Check that with Alex
+
+6. Show image of AM558/observation505/additional/TERZAN1/1min to Alex
+
+7. No errors for tclean for the sources in the above trajectories
+
+8. Weirdly enough, I got the warning when using tclean in TERZAN 1 for inf intervals but not the others
+
+
+####################### 1 July 2024 ######################
+1. I got the same indistinguishable image if I make a split file with the flux calibrator, gain calibrator and the source and then making a split file with just the target. 
+
+2. I imaged AM558 in the following manner: first I split the ms and created an ms with just the flux calibrator, gain calibrator and the target, I then applied the calibrations, and then split the file again with just the target. I did this thrice with the different solution intervals and the image that I created were all the same. 
+
+################### 2 July 2024 #######################
+
+1. will I run into any troubles with installing packages? either through terminal (pip install) or through conda?
+
+
+#################### 6 July 2024 #####################
+1. What happens when in an xray binary, a black hole completely absorbs a star?
+Answer. It depends upon the mass of the star. If it a supermassive black hole, it was tear the star apart and will form an accretion disk. it will be similar to the case of that of XBs. In the case of stellar mass black holes, we do not know.
+
+
+2. xbs must be formed after a star dies and turns into a ns or a bs. but what about other cases like red giant, white dwarf stars, etc? 
+Answer: Similar things happen. In the case of white dwarf stars, the elements of the star are found on the surface. Such is the case with Neutron Star X-ray binaries as well. 
+
+################## 11 July 2024 ########################
+
+1. 
+I am working with the source AM481 at the moment, 
+The image after running tclean has no point source
+I could not even run imfit. It gave me an error message. I need to consult alex for this
+This happened with both the observations
+
+
+################ 12 July 2024 ####################
+
+1 
+The plot of the calibration table of AM553 using the solution intervals 1min and inf seem a little weird. Include them in the presentation
+
+
+########### 13 July 2024 ##########################
+
+I am facing some issues while imaging my image for AM558 obs 2.
+In particular, I am facing some problems with zooming in. 
+usually when I used to change the box_bkg, the image would zoom in or zoom out. But not anymore for this project. 
+
+############## 26 July 2024 #####################
+
+1. How to find beam size using the imstat
+
+2. How to find beam size from the header
+
+Tutorial questions
+
+while running gaincal for initial phase corrections, we use:
+
+gaincal(vis='3c391_ctm_mosaic_10s_spw0.ms', caltable='3c391_ctm_mosaic_10s_spw0.G0all', 
+        field='0,1,9', refant='ea21', spw='0:27~36',
+        gaintype='G',calmode='p', solint='int', 
+        minsnr=5, gaintable=['3c391_ctm_mosaic_10s_spw0.antpos'])
+
+why do we choose spw='0:27~36' when the only spw is '0'
+
+#################### 13 August 2024 #######################
+- why do we say that Ter 1 has a complex xb population?
+Answer: Because of all the confusions regarding the positioning of x-ray and radio sources. In the 1990s, an x-ray source was identified. Then, later on, new studies came and another source was identified but these sources did not match up. That is why it is considered complex. 
+
+- can you explain this graph once please? last graph?
+Answer: On the X-axis, we have x-ray luminosity and on the Y-axis, we have radio luminosity. The black holes tend when looked through the lens of both radio and x-ray luminosity tend to fall on the linear line. Neutron stars tend to lie below it. So, when we identify a source, we could place the source on that graph which would help us identify whether the source is a black hole or a neutron star. 
+
+
+- how are the other sources that I identified going to be useful? do they have any significance? what about their transient nature?
+Answer: Yes, they do some significance. At the point of classification of the source, we can use those sources to correctly identify our transient sources. 
+
+
+- when i put the coordinates in each of the data base, I get different objects. how do we know which is the source that might be of interest to us? like when I put in the coordinates of terzan 1 (the center), i got the name of the first object (in ppt), but when I put in the same coordinates in simbad, i got the coordinates of a GC
+Answer: NED is an extra galactic database. it tell us about the sources which are outside our galaxy. SIMBAD, on the other hand, 
+
+- lab door 
+
+# 20 August 2024
+
+1. What cloud computing platform will you be using? 
+2. Would our computer's memory still be of some significance for running casa/carta? for any of the analysis?
+
+
+
+
+

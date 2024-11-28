@@ -1,0 +1,120 @@
+Background information 
+Some background info that will be very helpful
+
+# What this tutorial is about
+A continuum survey is an astronomical survey where the telescopes collect data of continuous spectrum of electromagnetic radiation from celestial objects. 
+
+So, in this tutorial, I am conducting a survey where I am 
+1. calibrating the flux density scale - how bright an object, here quasar, is and to use it as a measuring scale
+2. calculating the complex gain, where complex gain = astronomical and astrophysical disturbances
+
+Flux: Flux is the amount of energy from a luminous object that reaches a given surface or location. It is how bright an object observes to the observer. 
+if we know an object's distance, we can calculate its luminosity and vice versa!!! That is so cool!!!!!
+
+F = L / (4*pi*4^2), where F = Flux, L = Luminosity: amoutn of energy an object gives off per unit time.
+
+Flux Density: How much light or other electromagnetic energy from a source is hitting a specific area every second.
+It helps astronomers understand how bright or intense a celestial object appears from Earth. 
+
+ # cd: change directory, used to change the files where you are working on 
+
+ # ls: list files, lists the files that the current directory has.
+
+ # pwd: print working directory, will print out the full path to current directory you are working in. 
+
+ # Measurement set (MS): measurement set is a file which stores our data. It is actually a directory; the data and the metadeta are stored in tables and subdirectories within this directory.
+
+ # vis: name of the input visibilty file ls
+
+ # observed signal = original * Gain 
+ where gain can be anything, from atmospheric disturbances or disturbances outside the Earth. 
+ We get the original by using the quasar as a calibrator, as a measurement system. 
+ 
+
+ # What is interferometry?
+ Interferometry is a measurement method which is used to calculate distances using the interference of waves. 
+ If two antennas look at a certain astronomical object, one of the antennas is going to pick up the signals sooner than the other antennas. If we combine the data from both the antennas, it will blurr the signals. So, we precisely calculate the timings and then we get the precise location of the object. 
+
+ # What is complex gain calibration?
+Tracking amplitude and phase fluctuations as a function of time. 
+
+`cp -r NGC1068.split.ms ./redo`: What this does is that it will copy the data from NGC1068.split.ms into this separate directory called redo
+
+mkdir redo: this says that make another directory called redo
+
+ls -d *.ms: What this does is that it will list all the directories that end with the prefix '.ms'
+
+Spectral window: a range of frequencies or wavelengths within the electromagnetic spectrum that is being observed or studied. Each spectral window corresponds to a specific range of frequencies that the telescope is tuned to observe. Astronomers often divide the entire observational bandwidth into multiple spectral windows to study different physical processes or phenomena occuring at different frequencies.
+
+Field: A specific region of space that the telescope is observing 
+
+Scan: The movement of the telescope/antenna to observe the sky
+
+Array: It refers to a collection of multiple radio antennas that work together as a single unit to observe celestial objects.
+
+Baseline: The distance between two antennas in an interferometric array 
+
+Reference Antenna: The antennas plot aids the selection of a reference antenna. The reference antenna should be near the center of the array and be an antenna that had no problems during the observation as noted in the operator's log.
+
+Comparison of fluxscale with gaincal:
+fluxscale calibrates the flux density scale from the standard sources.
+Gaincal calculates calibration solutions for the antenna gains and phases
+
+Temporal gains: Temporal gains refer to improvements or advantages gained over time when observing celestial objects using radio telescopes
+
+Visibilities: the amplitude and phase information of the cross-correlated signals between pairs of antennas. 
+
+PB corrections: adjustments made to radio interferometric data to account 
+for spatially varying sensitivity of the radio telescope's primary beam. 
+Primary beam: region of sky within which the telescope is sensitive to 
+incoming radiation. 
+
+
+RMS noise: 
+Root mean square of a set of numbers is the square root of the set's mean square. 
+x_rms = sqrt(1/n(x_1^2 + x_2^2 + ... + x_n^2)) 
+Root Mean Square noise is the root mean square of the fluctuations. Its square equals the sum of the square of the mean fluctuations and square of the standard deviation of fluctuation. 
+
+Radio astronomers use beam, beam size, beam FWHM, and resolution interchangeably. Beams are typically assumed to be gaussian, and the pixel size is always a few times smaller than the bea. 
+
+
+HOW THE PROCESS CALIBRATION WORKS
+
+1. We use setjy, gencal and gaincal to get complex gain and antenna based calibratons and store them in the caltable.
+
+2. Then we use the flux density scale calibrator and caltable (input) to store the flux density scale calibration corrections into the fluxtable
+
+3. Then we apply the corrections to our source
+
+Date: 25 July 2024 
+"channels" refers to the discrete frequency bins or intervals into which the observed spectrum is divided. 
+
+Phase Corrections: Phase corrections are applied to correct phase errors which might distort the observed signals. 
+
+Phase Errors: 
+1. Atmospheric effects: Variations in the earth's atmosphere can introduce delays in the signal, causing phase changes.
+
+2. Instrumental Effects: imperfections or variations in the performance of the radio telescope or receiver can also cause phase errors
+
+3. Geometric and propagation effects: the impact of earth's rotations can affect phase
+
+
+Bandpass Corrections: it is the process of measuring and correcting the frequency-dependent part of the gains. They are made to account for imperfections in the frequency response of the radio telescope's receiver system. 
+
+Delay Calibration: antenna based delays which put a phase ramp versus frequency channel in each spectral window. 
+
+
+Date: 29 July 2024
+
+Deconvolution: in image processing, deconvolution refers to the removal of a filter that may make our image noisy. 
+
+Article for understanding fourier transform:
+https://betterexplained.com/articles/an-interactive-guide-to-the-fourier-transform/
+
+Date: 30 July 2024
+
+Dirty beam: it is the point spread funciton of the observation. When you Fourier transform your visibility measurements to obtain your image of the sky, it is convolved everywhere with the dirty beam pattern. At this stage, the image is called a dirty image
+
+Dirty beam, which is the point source function, is the impulse (reaction) of the array to the data observed. So, this point source function along with the original data forms the dirty image. When we apply deconvolution alogrithms like CLEAN, we remove the point source function
+
+uv plane
