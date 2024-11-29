@@ -1,8 +1,8 @@
-This reposity hosts all my code from my Summer 2024 research project in Astrophysics. 
+This repository hosts all my code from my Summer 2024 research project in Astrophysics. 
 
 ## Project Description: 
 
-In the 1990's, there were several studies conducted by Astrophysicists where they found that the X-ray and the Radio positions of an [X-ray binary](https://en.wikipedia.org/wiki/X-ray_binary) located at the very core of the Globular Cluster Terzan 1. Terzan 1, located 22,000 light years away, is a globular cluster in the Milky Way Galaxy. 
+In the 1990's, there were several studies conducted by Astrophysicists where they found that the X-ray and the Radio positions of an [X-ray binary](https://en.wikipedia.org/wiki/X-ray_binary) located at the very core of the Globular Cluster Terzan 1 did not match. Terzan 1, located 22,000 light years away, is a globular cluster in the Milky Way Galaxy. 
 
 In this project, I undertook the responsibility to analyse archival data from the telescope [Very Large Array (VLA)](https://public.nrao.edu/telescopes/vla/) to characterise the compact object population in this globular cluster.
 
